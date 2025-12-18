@@ -44,10 +44,13 @@ def init_game_loop(screen:Surface, clock: Clock, dt:float):
                 if(player.collides_with(item)):
                     log_event("player_hit")
                     print("Game over!")
+                    print(f"Total Score:{player.score}")
+                    print('----------------')
                     sys.exit()
                 for s in shots:
                     if(item.collides_with(s)):
                         item.split()
+                        player.score += 1
                         s.kill()
         for thing in drawable:
             thing.draw(screen)
