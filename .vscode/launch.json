@@ -2,4 +2,15 @@
   "name": "Python: main.py",
   "type": "python",
   "cwd": "${fileDirname}",
+  "configurations": [
+    {
+      "name": "Python Debugger: Current File with Arguments",
+      "type": "debugpy",
+      "request": "launch",
+      "program": "${file}",
+      "cwd": "${fileDirname}",
+      "console": "integratedTerminal",
+      "args": "${command:pickArgs}"
+    }
+  ],
 }

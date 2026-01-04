@@ -1,5 +1,29 @@
 import os
 import subprocess
+from google.genai import types
+
+schema_run_python_file = types.FunctionDeclaration(
+    name = 'run_python_file',
+    description='执行python 文件',
+    parameters=types.Schema(
+        type=types.Type.OBJECT,
+        properties={
+            'file_path': types.Schema(
+                type=types.Type.STRING,
+                description='python文件路径'
+            ),
+            'args': types.Schema(
+                type=types.Type.ARRAY,
+                items= types.Schema(type=types.Type.STRING), 
+                description='执行python文件时,的命令行参数'
+            ),
+        },
+        required=['file_path'],
+    ),
+) 
+
+
+
 
 def run_python_file(working_directory, file_path:str, args=None):
     try:
